@@ -31,8 +31,11 @@ const app = express();
 const port = 3000;
 
 
-const databaseId = "write";
-const containerId = "relation";
+const databaseId = "write";//유지
+
+const write = "write";//여기서부터 relation 줄까지는 컨테이너 id
+const user = "user";
+const relation = "relation";
 
 const client = new CosmosClient({ endpoint, key });
 
@@ -60,7 +63,7 @@ app.post('/write', async (req, res) => {
     }
     
     const { id, title, species,startDate,endDate,personnel,salary,contact,mealSleep,workingHour,location,details } = req.body;
-    const container = client.database(databaseId).container(containerId);
+    const container = client.database(databaseId).container(write);
 
     try {
         const { resource: createdItem } = await container.items.create({ id, title, species,startDate,endDate,personnel,salary,contact,mealSleep,workingHour,location,details });
