@@ -1,6 +1,8 @@
-import { Button, Stack, Text, Th } from "@chakra-ui/react";
+import { Button, Stack, Text, Th, useMediaQuery } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 export interface WorkBoxProps {
+  id: string;
   isFinish: boolean;
   location: string;
   title: string;
@@ -11,6 +13,7 @@ export interface WorkBoxProps {
 }
 
 const WorkBox = ({
+  id,
   isFinish,
   location,
   title,
@@ -19,12 +22,16 @@ const WorkBox = ({
   agritype,
   wage = "",
 }: WorkBoxProps) => {
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
-    <>
+    <Link to={`/work/${id}`}>
       <Th>{location}</Th>
       <Th>
         <Stack>
-          <Text fontWeight="bold" fontSize="1.3rem">
+          <Text
+            fontWeight={isLargerThan768 ? "bold" : "normal"}
+            fontSize={isLargerThan768 ? "1.3rem" : "1rem"}
+          >
             {title}
           </Text>
           <Text>
@@ -34,14 +41,13 @@ const WorkBox = ({
         </Stack>
       </Th>
       {wage === "" ? <Th>x</Th> : <Th>{wage}</Th>}
-      <Th>
-        {isFinish ? (
+      {isLargerThan768 ? <Th>{isFinish ? (
           <Button isDisabled={false}>마감</Button>
         ) : (
           <Button>지원하기</Button>
         )}
       </Th>
-    </>
+    </Link>
   );
 };
 

@@ -13,6 +13,7 @@ import {
   Th,
   Thead,
   Tr,
+  useMediaQuery,
 } from "@chakra-ui/react";
 //import { useParams } from "react-router-dom";
 import WorkBox from "../../components/WorkBox";
@@ -107,6 +108,7 @@ const dummyUser: MyPageProps = {
 const MyPage = () => {
   //const { userId } = useParams() || ""; // URL에서 사용자 ID를 가져오기
 
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
       <Box display="flex" justifyContent="center">
@@ -128,13 +130,14 @@ const MyPage = () => {
                   <Th>위치</Th>
                   <Th>공고정보</Th>
                   <Th>급여</Th>
-                  <Th>지원하기</Th>
+                  {isLargerThan768 ? <Th>지원하기</Th>:<></>}
                 </Tr>
               </Thead>
               <Tbody>
                 {dummy.content.map((dumm) => (
                   <Tr key={dumm.id}>
                     <WorkBox
+                      id={dumm.id}
                       title={dumm.title}
                       location={dumm.location}
                       startDate={dumm.startDate}
@@ -155,13 +158,16 @@ const MyPage = () => {
                   <Th>위치</Th>
                   <Th>공고정보</Th>
                   <Th>급여</Th>
-                  <Th>지원하기</Th>
+                  {isLargerThan768 ? 
+                  
+                  <Th>지원하기</Th>:<></>}
                 </Tr>
               </Thead>
               <Tbody>
                 {dummy.content.map((dumm) => (
                   <Tr key={dumm.id}>
                     <WorkBox
+                      id={dumm.id}
                       title={dumm.title}
                       location={dumm.location}
                       startDate={dumm.startDate}

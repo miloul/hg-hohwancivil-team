@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import MyPage from "../pages/MyPage";
 import DefaultLayout from "./layout/DefaultLayout";
-import DetailPage from "../pages/DetailWorkPage";
+import DetailPage from "../pages/DetailPage";
 import UploadPage from "../pages/UploadPage";
 import SearchPage from "../pages/SearchPage";
 
