@@ -9,6 +9,7 @@ import {
   Th,
   Thead,
   Tr,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import WorkBox from "../../components/WorkBox";
 
@@ -104,6 +105,8 @@ const dummy: workDummy = {
 };
 
 const HomePage = () => {
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)")
+
   return (
     <Tabs>
       <TabList>
@@ -118,7 +121,7 @@ const HomePage = () => {
                 <Th>위치</Th>
                 <Th>공고정보</Th>
                 <Th>급여</Th>
-                <Th>지원하기</Th>
+                {isLargerThan768 ? <Th>지원하기</Th>:<></>}
               </Tr>
             </Thead>
             <Tbody>
@@ -145,7 +148,7 @@ const HomePage = () => {
                 <Th>위치</Th>
                 <Th>공고정보</Th>
                 <Th>급여</Th>
-                <Th>지원하기</Th>
+                {isLargerThan768 ? <Th>지원하기</Th>:<></>}
               </Tr>
             </Thead>
             <Tbody>

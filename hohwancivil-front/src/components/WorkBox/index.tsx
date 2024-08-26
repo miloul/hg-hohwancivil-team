@@ -38,13 +38,12 @@ const WorkBox = ({
         </Stack>
       </Th>
       {wage === "" ? <Th>x</Th> : <Th>{wage}</Th>}
-      <Th>
-        {isFinish ? (
+      {isLargerThan768 ? <Th>{isFinish ? (
           <Button isDisabled={false}>마감</Button>
         ) : (
           <Button>지원하기</Button>
-        )}
-      </Th>
+        )}</Th>:<></>}
+
     </>
   );
 };
