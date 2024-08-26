@@ -125,6 +125,7 @@ const HomePage = () => {
               {dummy.content.map((dumm) => (
                 <Tr key={dumm.id}>
                   <WorkBox
+                    id={dumm.id}
                     title={dumm.title}
                     location={dumm.location}
                     startDate={dumm.startDate}
@@ -152,6 +153,7 @@ const HomePage = () => {
               {dummy.content.map((dumm) => (
                 <Tr key={dumm.id}>
                   <WorkBox
+                    id={dumm.id}
                     title={dumm.title}
                     location={dumm.location}
                     startDate={dumm.startDate}
