@@ -1,4 +1,4 @@
-import { Button, Stack, Text, Th } from "@chakra-ui/react";
+import { Button, Stack, Text, Th, useMediaQuery } from "@chakra-ui/react";
 
 export interface WorkBoxProps {
   isFinish: boolean;
@@ -19,12 +19,16 @@ const WorkBox = ({
   agritype,
   wage = "",
 }: WorkBoxProps) => {
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
       <Th>{location}</Th>
       <Th>
         <Stack>
-          <Text fontWeight="bold" fontSize="1.3rem">
+          <Text
+            fontWeight={isLargerThan768 ? "bold" : "normal"}
+            fontSize={isLargerThan768 ? "1.3rem" : "1rem"}
+          >
             {title}
           </Text>
           <Text>
