@@ -6,10 +6,13 @@ import {
   Spacer,
   Stack,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import DetailText from "../../components/DetailText";
 
 const DetailPage = () => {
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+
   return (
     <>
       <Center>
@@ -19,12 +22,17 @@ const DetailPage = () => {
           </Heading>
           <Spacer />
           <Grid
-            gridTemplateColumns="1fr 1fr 1fr"
+            gridTemplateColumns={isLargerThan768 ? "1fr 1fr 1fr" : "1fr"}
+            gridTemplateRows={isLargerThan768 ? "1fr" : "1fr 1fr 1fr"}
             border="1px solid gray"
             borderRadius="1rem"
             padding="2.5rem"
           >
-            <Stack borderRight="1px solid gray">
+            <Stack
+              borderRight="1px solid gray"
+              marginLeft="1rem"
+              marginBottom={isLargerThan768 ? "0rem" : "1 rem"}
+            >
               <Text fontSize="1.3rem" fontWeight="bold">
                 근무조건
               </Text>
